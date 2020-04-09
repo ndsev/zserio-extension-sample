@@ -6,16 +6,7 @@ This extension prints all AST (Abstract Syntax Tree) nodes to the terminal. The 
 command line option `-sample`.
 
 Zserio extension is a Java [extension](https://docs.oracle.com/javase/tutorial/ext/index.html) which must
-implement `zserio.tools.Extension` interface. This interface provides to the Zserio core the following
-methods:
-
-Method Name       | Description
------------------ | -------------------------------------------------------------------------------------------
-`getName`         | Name of the extension. Zserio core uses this name for reporting.
-`getVersion`      | Version of the extension. Zserio core will accept the extension only and only if this extension version is the same as the Zserio core version.
-`registerOptions` | Command line options accepted by the extension. These command line options will be registered by the Zserio core.
-`isEnabled`       | Enabled Flag of the extension. Zserio core will run the extension only and only if this enabled flag is `true`. This allows the extension to check the command line options.
-`generate`        | Entry point of the extension. Zserio core will call this entry point to generate all outputs from the extension.
+implement [`zserio.tools.Extension`](https://github.com/ndsev/zserio/blob/v2.0.0-pre3/compiler/core/src/zserio/tools/Extension.java) interface.
 
 ## Prerequisites
 

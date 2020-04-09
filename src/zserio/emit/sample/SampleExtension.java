@@ -43,7 +43,6 @@ public class SampleExtension implements Extension
         rootNode.emit(sampleEmitter);
     }
 
-    private final static String VERSION_STRING = "2.0.0-pre2";
+    private final static String VERSION_STRING = "2.0.0-pre3";
     private final static String OPTION_SAMPLE = "sample";
 }
-
