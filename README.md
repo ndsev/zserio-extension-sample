@@ -26,14 +26,24 @@ ant install
 
 ## Run
 
-Using new bundle jar:
+```bash
+java -cp build/download/zserio_libs/zserio_core.jar:distr/zserio_sample.jar \
+    zserio.tools.ZserioTool simple_structure.zs -sample
+```
+
+## Bundled Zserio
+
+There is a sample implementation of bundled Zserio which will contain all extensions found in the original
+bundled Zserio together with the extension sample.
+
+### Build
+
+```bash
+ant zserio_bundle.install
+```
+
+### Run
 
 ```bash
 java -jar distr/zserio.jar simple_structure.zs -sample
-```
-
-Alternatively using Zserio core only:
-
-```bash
-java -cp build/download/zserio_libs/zserio_core.jar:distr/zserio_sample.jar zserio.tools.ZserioTool simple_structure.zs -sample
 ```
