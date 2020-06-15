@@ -19,7 +19,7 @@ public class SampleExtension implements Extension
     @Override
     public String getVersion()
     {
-        return VERSION_STRING;
+        return ZSERIO_VERSION_STRING;
     }
 
     @Override
@@ -43,6 +43,7 @@ public class SampleExtension implements Extension
         rootNode.emit(sampleEmitter);
     }
 
-    private final static String VERSION_STRING = "2.0.0-pre3";
+    private final static String EXTENSION_VERSION_STRING = "0.1.0";
+    private final static String ZSERIO_VERSION_STRING = "2.0.0";
     private final static String OPTION_SAMPLE = "sample";
 }

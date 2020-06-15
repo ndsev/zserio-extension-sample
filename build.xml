@@ -10,7 +10,7 @@ The following external properties can be set:
 zserio_sample.build_dir   - Directory where to put generated files. Default is "build".
 zserio_sample.install_dir - Directory where to install Zserio Sample Extension jar file. Default is "distr".
 zserio.distr_dir          - Zserio distr directory to use. If not set, zserio binaries will be automatically
-                            downloaded from GitHub.                          
+                            downloaded from GitHub.
 spotbugs.home_dir         - Location of the spotbugs tool. If not set, spotbugs is not run.
 
 -->
@@ -56,7 +56,22 @@ spotbugs.home_dir         - Location of the spotbugs tool. If not set, spotbugs 
             <striplinebreaks/>
             <tokenfilter>
                 <replaceregex
-                    pattern='.*VERSION_STRING\s*=\s*"([0-9]+.[0-9]+.[0-9]+(-[A-Za-z0-9]+)?)".*'
+                    pattern='.*EXTENSION_VERSION_STRING\s*=\s*"([0-9]+.[0-9]+.[0-9]+(-[A-Za-z0-9]+)?)".*'
+                    replace="\1"/>
+            </tokenfilter>
+        </filterchain>
+    </loadfile>
+
+    <!-- Zserio core version. -->
+    <loadfile
+        encoding="UTF-8"
+        property="zserio_core.version"
+        srcFile="${zserio_sample.src_dir}/zserio/emit/sample/SampleExtension.java">
+        <filterchain>
+            <striplinebreaks/>
+            <tokenfilter>
+                <replaceregex
+                    pattern='.*ZSERIO_VERSION_STRING\s*=\s*"([0-9]+.[0-9]+.[0-9]+(-[A-Za-z0-9]+)?)".*'
                     replace="\1"/>
             </tokenfilter>
         </filterchain>
@@ -76,12 +91,12 @@ spotbugs.home_dir         - Location of the spotbugs tool. If not set, spotbugs 
     <target name="zserio_download" unless="zserio.distr_dir">
         <mkdir dir="${zserio_sample.download_dir}"/>
         <property name="github_https_download" value="https://github.com/ndsev/zserio/releases/download"/>
-        <property name="zserio_bin_zip_name" value="zserio-${zserio_sample.version}-bin.zip"/>
-        <get src="${github_https_download}/v${zserio_sample.version}/${zserio_bin_zip_name}"
+        <property name="zserio_bin_zip_name" value="zserio-${zserio_core.version}-bin.zip"/>
+        <get src="${github_https_download}/v${zserio_core.version}/${zserio_bin_zip_name}"
             dest="${zserio_sample.download_dir}" usetimestamp="true"/>
         <unzip src="${zserio_sample.download_dir}/${zserio_bin_zip_name}" dest="${zserio_sample.download_dir}"/>
     </target>
-    
+
     <target name="compile" depends="zserio_download, zserio_copy">
         <mkdir dir="${zserio_sample.classes_dir}"/>
         <depend srcDir="${zserio_sample.src_dir}" destDir="${zserio_sample.classes_dir}"
@@ -188,7 +203,7 @@ spotbugs.home_dir         - Location of the spotbugs tool. If not set, spotbugs 
             <zipfileset src="${zserio_core.antlr_jar}" excludes="META-INF/*"/>
             <manifest>
                 <attribute name="Main-Class" value="zserio.tools.ZserioTool"/>
-                <attribute name="Implementation-Version" value="${zserio.version}"/>
+                <attribute name="Implementation-Version" value="${zserio_core.version}"/>
             </manifest>
             <metainf dir="${zserio_bundle.build_dir}/metainf" includes="**/*" erroronmissingdir="false"/>
         </jar>
