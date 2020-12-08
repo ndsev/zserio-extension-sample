@@ -51,7 +51,7 @@ spotbugs.home_dir         - Location of the spotbugs tool. If not set, spotbugs 
     <loadfile
         encoding="UTF-8"
         property="zserio_sample.version"
-        srcFile="${zserio_sample.src_dir}/zserio/emit/sample/SampleExtension.java">
+        srcFile="${zserio_sample.src_dir}/zserio/extension/sample/SampleExtension.java">
         <filterchain>
             <striplinebreaks/>
             <tokenfilter>
@@ -66,7 +66,7 @@ spotbugs.home_dir         - Location of the spotbugs tool. If not set, spotbugs 
     <loadfile
         encoding="UTF-8"
         property="zserio_core.version"
-        srcFile="${zserio_sample.src_dir}/zserio/emit/sample/SampleExtension.java">
+        srcFile="${zserio_sample.src_dir}/zserio/extension/sample/SampleExtension.java">
         <filterchain>
             <striplinebreaks/>
             <tokenfilter>
@@ -85,7 +85,7 @@ spotbugs.home_dir         - Location of the spotbugs tool. If not set, spotbugs 
         <mkdir dir="${zserio_sample.download_dir}"/>
         <copy todir="${zserio_sample.download_dir}">
             <fileset dir="${zserio.distr_dir}"/>
-        </copy>        
+        </copy>
     </target>
 
     <target name="zserio_download" unless="zserio.distr_dir">

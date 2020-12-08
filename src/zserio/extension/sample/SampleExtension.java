@@ -1,19 +1,24 @@
-package zserio.emit.sample;
+package zserio.extension.sample;
 
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 
 import zserio.ast.Root;
-import zserio.emit.common.ZserioEmitException;
+import zserio.extension.common.ZserioExtensionException;
 import zserio.tools.Extension;
-import zserio.tools.Parameters;
+import zserio.tools.ExtensionParameters;
 
+/**
+ * The sample extension.
+ *
+ * It just prints Zserio types defined in the schema to the standard otuput.
+ */
 public class SampleExtension implements Extension
 {
     @Override
     public String getName()
     {
-        return "Sample Generator";
+        return "Sample";
     }
 
     @Override
@@ -31,19 +36,19 @@ public class SampleExtension implements Extension
     }
 
     @Override
-    public boolean isEnabled(Parameters parameters)
+    public boolean isEnabled(ExtensionParameters parameters)
     {
         return parameters.argumentExists(OPTION_SAMPLE);
     }
 
     @Override
-    public void generate(Parameters parameters, Root rootNode) throws ZserioEmitException
+    public void process(Root rootNode, ExtensionParameters parameters) throws ZserioExtensionException
     {
         final SampleEmitter sampleEmitter = new SampleEmitter();
-        rootNode.emit(sampleEmitter);
+        rootNode.walk(sampleEmitter);
     }
 
     private final static String EXTENSION_VERSION_STRING = "0.1.0";
-    private final static String ZSERIO_VERSION_STRING = "2.0.0";
+    private final static String ZSERIO_VERSION_STRING = "2.1.0";
     private final static String OPTION_SAMPLE = "sample";
 }
