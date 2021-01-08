@@ -188,7 +188,7 @@ spotbugs.home_dir         - Location of the spotbugs tool. If not set, spotbugs 
                 <archives>
                     <zips>
                         <fileset dir="${zserio_sample.3rdparty_dir}" includes="*.jar"
-                            excludes="${zserio_core.commons_cli_jar_name} \
+                            excludes="${zserio_core.commons_cli_jar_name}
                                 ${zserio_core.freemarker_jar_name} ${zserio_core.antlr_jar_name}"/>
                         <fileset dir="${zserio_sample.jar_dir}" includes="*.jar"/>
                     </zips>
