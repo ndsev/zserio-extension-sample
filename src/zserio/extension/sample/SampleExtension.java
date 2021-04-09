@@ -42,6 +42,11 @@ public class SampleExtension implements Extension
     }
 
     @Override
+    public void check(Root rootNode, ExtensionParameters parameters) throws ZserioExtensionException
+    {
+    }
+
+    @Override
     public void process(Root rootNode, ExtensionParameters parameters) throws ZserioExtensionException
     {
         final SampleEmitter sampleEmitter = new SampleEmitter();
