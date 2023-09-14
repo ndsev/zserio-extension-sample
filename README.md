@@ -5,8 +5,34 @@ Sample implementation of Zserio extension.
 This extension prints all AST (Abstract Syntax Tree) nodes to the terminal. The extension can be invoked by
 command line option `-sample`.
 
-Zserio extension is a Java [extension](https://docs.oracle.com/javase/tutorial/ext/index.html) which must
-implement [`zserio.tools.Extension`](https://github.com/ndsev/zserio/blob/v2.0.0-pre3/compiler/core/src/zserio/tools/Extension.java) interface.
+**Example**
+
+Using the schema
+
+```
+package simple_structure;
+
+struct SimpleStructure
+{
+    int32  numberA;
+    uint8  numberB;
+    string name;
+}
+```
+
+gives Zserio compiler together with this Zserio extension sample the following output:
+
+```
+Parsing simple_structure.zs
+Calling Sample extension check
+Calling Sample extension
+  package simple_structure
+    structure SimpleStructure
+      int32 numberA
+      uint8 numberB
+      string name
+Done
+```
 
 ## Prerequisites
 
