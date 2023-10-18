@@ -1,0 +1,52 @@
+name: Linux
+
+on:
+  push:
+    branches: [ master, '*-ci' ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build_linux:
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: ["ubuntu-20.04", "ubuntu-22.04"]
+    env:
+      CMAKE_EXTRA_ARGS: "-DCMAKE_BUILD_TYPE=Release"
+      SPOTBUGS_HOME: "${{github.workspace}}/spotbugs-3.1.12"
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v3
+      with:
+        distribution: temurin
+        java-version: 8
+
+    - name: Install specific version of Java static code analysis tool (spotbugs)
+      run: |
+        wget https://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs/3.1.12/spotbugs-3.1.12.zip -P "${GITHUB_WORKSPACE}"
+        unzip "${GITHUB_WORKSPACE}"/spotbugs-3.1.12.zip
+
+    - name: Build Zserio extension sample
+      run: ant spotbugs -Dspotbugs.home_dir="${SPOTBUGS_HOME}"
+
+    - name: Build Zserio extension sample (all in one jar)
+      run: ant zserio_bundle.install
+
+    - name: Test Zserio extension sample
+      run: java -cp "build/download/zserio_libs/zserio_core.jar:distr/zserio_sample.jar" zserio.tools.ZserioTool simple_structure.zs -sample
+
+    - name: Test Zserio extension sample (all in one jar)
+      run: java -jar distr/zserio.jar simple_structure.zs -sample
+
+    - name: Archive Zserio extension sample binaries
+      uses: actions/upload-artifact@v3
+      with:
+        name: zserio-extension-sample
+        path: distr/*.jar

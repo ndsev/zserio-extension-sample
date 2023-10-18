@@ -1,5 +1,13 @@
 # Zserio Extension Sample
 
+[![](https://github.com/ndsev/zserio-extension-sample/actions/workflows/build_linux.yml/badge.svg)](https://github.com/ndsev/zserio-extension-sample/actions/workflows/build_linux.yml)
+[![](https://github.com/ndsev/zserio-extension-sample/actions/workflows/build_windows.yml/badge.svg)](https://github.com/ndsev/zserio-extension-sample/actions/workflows/build_windows.yml)
+[![](https://img.shields.io/github/watchers/ndsev/zserio-extension-sample.svg)](https://GitHub.com/ndsev/zserio-extension-sample/watchers)
+[![](https://img.shields.io/github/forks/ndsev/zserio-extension-sample.svg)](https://GitHub.com/ndsev/zserio-extension-sample/network/members)
+[![](https://img.shields.io/github/stars/ndsev/zserio-extension-sample.svg?color=yellow)](https://GitHub.com/ndsev/zserio-extension-sample/stargazers)
+
+--------
+
 Sample implementation of Zserio extension.
 
 This extension prints all AST (Abstract Syntax Tree) nodes to the terminal. The extension can be invoked by
