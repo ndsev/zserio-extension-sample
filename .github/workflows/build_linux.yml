@@ -14,7 +14,6 @@ jobs:
       matrix:
         os: ["ubuntu-20.04", "ubuntu-22.04"]
     env:
-      CMAKE_EXTRA_ARGS: "-DCMAKE_BUILD_TYPE=Release"
       SPOTBUGS_HOME: "${{github.workspace}}/spotbugs-3.1.12"
     steps:
     - name: Checkout
