@@ -47,5 +47,5 @@ jobs:
     - name: Archive Zserio extension sample binaries
       uses: actions/upload-artifact@v3
       with:
-        name: zserio-extension-sample
+        name: zserio-extension-sample-${{matrix.os}}
         path: distr/*.jar
