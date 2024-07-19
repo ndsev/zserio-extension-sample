@@ -60,6 +60,6 @@ public class SampleExtension implements Extension
     }
 
     private final static String EXTENSION_VERSION_STRING = "1.0.0";
-    private final static String ZSERIO_VERSION_STRING = "2.14.0";
+    private final static String ZSERIO_VERSION_STRING = "2.14.1";
     private final static String OPTION_SAMPLE = "sample";
 }
