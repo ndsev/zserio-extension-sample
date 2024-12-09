@@ -65,6 +65,13 @@ java -cp build/download/zserio_libs/zserio_core.jar:distr/zserio_sample.jar \
     zserio.tools.ZserioTool simple_structure.zs -sample
 ```
 
+To simplify the command for running the extension, ensure that `zserio_sample.jar` is in the same directory
+as `zserio_core.jar`. Once copied, you can use the following command:
+
+```
+java -jar zserio_core.jar simple_structure.zs -sample
+```
+
 ## Bundled Zserio
 
 There is a sample implementation of bundled Zserio which will contain all extensions found in the original
