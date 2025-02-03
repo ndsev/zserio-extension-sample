@@ -59,7 +59,7 @@ jobs:
       shell: bash
 
     - name: Archive Zserio extension sample binaries
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: zserio-extension-sample-${{matrix.os}}
         path: distr/*.jar
