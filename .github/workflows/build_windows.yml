@@ -58,6 +58,10 @@ jobs:
       run: java -jar distr/zserio.jar simple_structure.zs -sample
       shell: bash
 
+    - name: Check that the build left tracked files unchanged
+      run: git diff --exit-code
+      shell: bash
+
     - name: Archive Zserio extension sample binaries
       uses: actions/upload-artifact@v4
       with:
