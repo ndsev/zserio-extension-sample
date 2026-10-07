@@ -46,8 +46,19 @@ jobs:
     - name: Test Zserio extension sample (all in one jar)
       run: java -jar distr/zserio.jar simple_structure.zs -sample
 
+    - name: Check that the build left tracked files unchanged
+      run: git diff --exit-code
+
     - name: Archive Zserio extension sample binaries
       uses: actions/upload-artifact@v4
       with:
         name: zserio-extension-sample-${{matrix.os}}
         path: distr/*.jar
+
+  keepalive:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - uses: liskin/gh-workflow-keepalive@v1
